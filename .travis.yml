@@ -3,8 +3,8 @@ notifications:
   email: false
 before_install:
   - sudo apt-get -qq update
-   - chmod +x gradlew
   - sudo apt-get install -y pax
+  - chmod +x gradlew
 env:
   global:
   - ANDROID_API_LEVEL=26
