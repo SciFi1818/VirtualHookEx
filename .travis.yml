@@ -8,17 +8,16 @@ android:
     - android-23
     - extra-google-m2repository
     - extra-android-m2repository
-    
-  before_install:
-  - chmod +x gradlew
-  - rm -fr $HOME/android-ndk-r16b
-  - curl -L http://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -O
-  - unzip -oq android-ndk-r16b-linux-x86_64.zip
-  - rm android-ndk-r16b-linux-x86_64.zip
-  - export ANDROID_NDK_HOME=$HOME/android-ndk-r16b
+before_install:
+ - chmod +x gradlew
+ - rm -fr $HOME/android-ndk-r16b
+ - curl -L http://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -O
+ - unzip -oq android-ndk-r16b-linux-x86_64.zip
+ - rm android-ndk-r16b-linux-x86_64.zip
+ - export ANDROID_NDK_HOME=$HOME/android-ndk-r16b
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+ - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+ - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
   - "$HOME/.gradle/caches/"
