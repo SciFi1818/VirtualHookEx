@@ -1,6 +1,5 @@
 language: android
 jdk: oraclejdk8
-
 android:
   components:
     - tools
@@ -9,9 +8,8 @@ android:
     - android-23
     - extra-google-m2repository
     - extra-android-m2repository
-
   before_install:
-    - chmod +x gradlew
+  - chmod +x gradlew
   - rm -fr $HOME/android-ndk-r16b
   - curl -L http://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip -O
   - unzip -oq android-ndk-r16b-linux-x86_64.zip
