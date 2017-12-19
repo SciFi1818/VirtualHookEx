@@ -1,42 +1,37 @@
 language: android
-notifications:
-  email: false
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y pax
-  - chmod +x gradlew
-env:
-  global:
-  - ANDROID_API_LEVEL=26
-  - ANDROID_BUILD_TOOLS_VERSION=26.0.1
-  - ANDROID_EMU_API_LEVEL=22
-  - ANDROID_ABI=armeabi-v7a
-  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
-  - QEMU_AUDIO_DRV=none # Remove audio
+jdk: oraclejdk8
+sudo: false
+
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.android/build-cache
+    - ${TRAVIS_BUILD_DIR}/gradle/caches/
+    - ${TRAVIS_BUILD_DIR}/gradle/wrapper/dists/
+
+env:
+  global:
+    - ANDROID_API_LEVEL=23
+
+    - ANDROID_BUILD_TOOLS_VERSION=23.0.2
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+
 android:
   components:
-  - tools
-  - platform-tools
-  - tools
+    - tools # to get the new `repository-11.xml`
+    - platform-tools
   - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-  - android-$ANDROID_API_LEVEL
-  - android-$ANDROID_EMU_API_LEVEL
-  - extra-android-support
-  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
-before_script:
-  - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_travisci\n" >> ~/.ssh/config
-  - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
-  - emulator -avd test -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-script:
-  - ./gradlew clean installDebug
-  - ./gradlew check
-  - ./gradlew testDebugUnitTest
-  - ./gradlew connectedDebugAndroidTest
+    - android-$ANDROID_API_LEVEL
 
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+
+    - extra-google-google_play_services
+
+    - extra-android-support
+
+    - extra-google-m2repository
+    - extra-android-m2repository
+
+
+script:
+  - ./gradlew clean check connectedCheck -x library:signArchives -PdisablePreDex
