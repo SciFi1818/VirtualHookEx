@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Upload travis generated APKs to the Transfer.shcd /home/travis/build/SciFi1818/VirtualHookEx/app
+# Upload travis generated APKs to the Transfer.shcd /home/travis/build/SciFi1818/VirtualHookEx/app/build
 ls
-zip -r virtualhook.zip build *
+zip -r virtualhook.zip outputs *
 cu=`curl --upload-file virtualhook.zip https://transfer.sh/virtualhook.zip`
 
 echo "Transfer.sh links:"
