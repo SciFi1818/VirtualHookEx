@@ -8,11 +8,11 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-        externalNativeBuild {
-            ndkBuild {
-                abiFilters "armeabi-v7a"
-            }
-        }
+       // externalNativeBuild {
+        //    ndkBuild {
+            //    abiFilters "armeabi-v7a"
+          //  }
+      //  }
     }
     buildTypes {
         release {
@@ -20,11 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    externalNativeBuild {
-        ndkBuild {
-            path file("src/main/jni/Android.mk")
-        }
-    }
+   // externalNativeBuild {
+     //   ndkBuild {
+      //      path file("src/main/jni/Android.mk")
+      //  }
+  //  }
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
