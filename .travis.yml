@@ -41,3 +41,18 @@ cache:
    - "$HOME/.gradle/caches/"
    - "$HOME/.gradle/wrapper/"
    - "$HOME/.android/build-cache"
+   
+   
+   
+deploy:
+  provider: releases
+  file: "VirtualHookEx/build/outputs/apk/VirtualHookEx*release*.apk"
+  file_glob: "true"
+  skip_cleanup: true
+  on:
+    branch: master
+    repo: SciFi1818/VirtualHookEx
+    
+    
+after_success:
+- sh set_tags.sh
