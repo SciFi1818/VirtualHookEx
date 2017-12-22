@@ -13,15 +13,15 @@ before_script:
   - chmod +x gradlew
   - export TERM=dumb
   # Approx. 3 seconds
-  - curl -L http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin -O
-  - chmod u+x android-ndk-r10e-linux-x86_64.bin
+#  - curl -L http://dl.google.com/android/ndk/android-ndk-r10e-linux-x86_64.bin -O
+#  - chmod u+x android-ndk-r10e-linux-x86_64.bin
   # Usually around 1 minute 
-  - ./android-ndk-r10e-linux-x86_64.bin > /dev/null
-  - rm android-ndk-r10e-linux-x86_64.bin
-  - export ANDROID_NDK_HOME=`pwd`/android-ndk-r10e
-  - export LOCAL_ANDROID_NDK_HOME="$ANDROID_NDK_HOME"
-  - export LOCAL_ANDROID_NDK_HOST_PLATFORM="linux-x86_64"
-  - export PATH=$PATH:${ANDROID_NDK_HOME}
+#  - ./android-ndk-r10e-linux-x86_64.bin > /dev/null
+#  - rm android-ndk-r10e-linux-x86_64.bin
+#  - export ANDROID_NDK_HOME=`pwd`/android-ndk-r10e
+#  - export LOCAL_ANDROID_NDK_HOME="$ANDROID_NDK_HOME"
+ # - export LOCAL_ANDROID_NDK_HOST_PLATFORM="linux-x86_64"
+ # - export PATH=$PATH:${ANDROID_NDK_HOME}
   - env
 licenses:
   - 'android-sdk-preview-license-.+'
@@ -31,8 +31,8 @@ before_install:
   - yes | sdkmanager "platforms;android-25"
   - chmod +x gradlew
 
-script:
-   - ./gradlew clean build
+#script:
+  # - ./gradlew clean build
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
