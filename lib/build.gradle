@@ -13,7 +13,17 @@ android {
             //    abiFilters "armeabi-v7a"
           //  }
       //  }
+      
+      
+    sourceSets {
+        main {
+            jni.srcDirs = []
+        
     }
+}
+    }
+    
+    
     buildTypes {
         release {
             minifyEnabled false
