@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Upload travis generated APKs to the Transfer.sh
 cd /home/travis/build/SciFi1818/VirtualHookEx/app/build
 ls
